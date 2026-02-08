@@ -23,7 +23,7 @@ gradle
 ```gradlew.bat bootRun```  
 
 ・PowerShell  
-```.\gradle bootRun```  
+```.\gradle.bat bootRun```  
 
 Maven  
 ・コマンドプロンプト  
@@ -37,5 +37,6 @@ Maven
 ```Started HelloSpringApplication in xxx seconds```  
 
 5.動作確認  
+※ curl が使用できない場合は、ブラウザで http://localhost:8080/hello にアクセスしても確認できます。  
 ```curl http://localhost:8080/hello```  
 ```curl http://localhost:8080/api/tasks```  
