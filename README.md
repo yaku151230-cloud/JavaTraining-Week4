@@ -36,7 +36,7 @@ Maven
 以下のようなログが表示されれば起動成功です。  
 ```Started HelloSpringApplication in xxx seconds```  
 
-5.動作確認  
-※ curl が使用できない場合は、ブラウザで http://localhost:8080/hello にアクセスしても確認できます。  
-```curl http://localhost:8080/hello```  
-```curl http://localhost:8080/api/tasks```  
+5.動作確認    
+①```curl http://localhost:8080/hello```  
+②```curl http://localhost:8080/api/tasks```  
+※ curl が使用できない場合は、ブラウザで ①http://localhost:8080/hello もしくは ②http://localhost:8080/api/tasksにアクセスしても確認できます。
