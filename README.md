@@ -39,9 +39,11 @@ Maven
 5.動作確認    
 ①```curl http://localhost:8080/hello```  
 ②```curl http://localhost:8080/api/tasks```  
-※ curl が使用できない場合は、ブラウザで ①http://localhost:8080/hello もしくは ②http://localhost:8080/api/tasks にアクセスしても確認できます。  
+※ curl が使用できない場合は、ブラウザで以下にアクセスしても確認できます。  
+①http://localhost:8080/hello  
+②http://localhost:8080/api/tasks  
 
-新しいタスクを登録するには、ターミナル（コマンドプロンプトやPowerShell）で以下のコードを入力してください。```title```, ```new task```を任意の文字に書き換えることで登録できます。  
+新しいタスクを登録するには、ターミナル（コマンドプロンプトやPowerShell）で以下のコードを入力してください。```new task```を任意のタスク名に変更可能です。  
 ```curl -X POST http://localhost:8080/api/tasks \```  
   ```-H "Content-Type: application/json" \```  
   ```-d "{ \"title\": \"new task\" }"```  
