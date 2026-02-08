@@ -39,4 +39,4 @@ Maven
 5.動作確認    
 ①```curl http://localhost:8080/hello```  
 ②```curl http://localhost:8080/api/tasks```  
-※ curl が使用できない場合は、ブラウザで ①http://localhost:8080/hello もしくは ②http://localhost:8080/api/tasksにアクセスしても確認できます。
+※ curl が使用できない場合は、ブラウザで ①http://localhost:8080/hello もしくは ②http://localhost:8080/api/tasks にアクセスしても確認できます。
