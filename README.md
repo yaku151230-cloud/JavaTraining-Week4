@@ -40,3 +40,7 @@ Maven
 ①```curl http://localhost:8080/hello```  
 ②```curl http://localhost:8080/api/tasks```  
 ※ curl が使用できない場合は、ブラウザで ①http://localhost:8080/hello もしくは ②http://localhost:8080/api/tasks にアクセスしても確認できます。
+
+## エラーが出た場合の対処
+・gradlew 実行時にコマンドが見つからないエラーが出たが、プロジェクト直下に移動して再実行することで解決した。  
+・起動時に Java のバージョンエラーが発生したが、Java25 から Java17 に変更することで解決した。  
