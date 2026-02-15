@@ -39,7 +39,7 @@ Invoke-RestMethod `
   -Uri http://localhost:8080/api/tasks `
   -Method POST `
   -ContentType "application/json" `
-  -Body '{"title":"テストタスク"}' 
+  -Body '{"title":"テストタスク"}'   ```
 
 ## 例外ハンドリングの動作例   
 ・バリデーションエラー   
@@ -47,7 +47,7 @@ Invoke-RestMethod `
   -Uri http://localhost:8080/api/tasks `   
   -Method POST `   
   -ContentType "application/json" `   
-  -Body '{"title":""}'   
+  -Body '{"title":""}'   ```
 
 ・存在しないリソースへのアクセス   
 ```Invoke-RestMethod http://localhost:8080/api/tasks/999```   
