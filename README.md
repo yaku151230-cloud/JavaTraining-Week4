@@ -29,16 +29,17 @@ gradle
 以下のようなログが表示されれば起動成功です。  
 ```Started HelloSpringApplication in xxx seconds```  
 
-## 実行・確認手順   
+## 実行・確認手順(以下は PowerShell での実行例です。)
 ・タスク一覧取得   
 ```Invoke-RestMethod http://localhost:8080/api/tasks```   
 
 ・タスク登録   
-```Invoke-RestMethod `   
-  -Uri http://localhost:8080/api/tasks `   
-  -Method POST `   
-  -ContentType "application/json" `   
-  -Body '{"title":"テストタスク"}'   
+```powershell
+Invoke-RestMethod `
+  -Uri http://localhost:8080/api/tasks `
+  -Method POST `
+  -ContentType "application/json" `
+  -Body '{"title":"テストタスク"}' 
 
 ## 例外ハンドリングの動作例   
 ・バリデーションエラー   
