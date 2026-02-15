@@ -34,7 +34,7 @@ gradle
 ```Invoke-RestMethod http://localhost:8080/api/tasks```   
 
 ・タスク登録   
-Invoke-RestMethod `   
+```Invoke-RestMethod `   
   -Uri http://localhost:8080/api/tasks `   
   -Method POST `   
   -ContentType "application/json" `   
@@ -42,7 +42,7 @@ Invoke-RestMethod `
 
 ## 例外ハンドリングの動作例   
 ・バリデーションエラー   
-Invoke-RestMethod `   
+```Invoke-RestMethod `   
   -Uri http://localhost:8080/api/tasks `   
   -Method POST `   
   -ContentType "application/json" `   
