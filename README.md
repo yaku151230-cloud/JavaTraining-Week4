@@ -20,10 +20,14 @@ Spring Boot を使用して、タスクを登録・取得できる簡単な REST
 3.アプリケーションの起動  
 gradle  
 ・コマンドプロンプト  
-```gradlew.bat bootRun```  
+```powershell
+gradlew.bat bootRun
+```  
 
 ・PowerShell  
-```.\gradle.bat bootRun```  
+```powershell
+.\gradlew.bat bootRun
+```  
 
 4.起動確認  
 以下のようなログが表示されれば起動成功です。  
@@ -31,7 +35,9 @@ gradle
 
 ## 実行・確認手順(以下は PowerShell での実行例です。)
 ・タスク一覧取得   
-```Invoke-RestMethod http://localhost:8080/api/tasks```   
+```powershell
+Invoke-RestMethod http://localhost:8080/api/tasks
+```   
 
 ・タスク登録   
 ```powershell
@@ -53,4 +59,6 @@ Invoke-RestMethod `
 ```   
 
 ・存在しないリソースへのアクセス   
-```Invoke-RestMethod http://localhost:8080/api/tasks/999```   
+```powershell
+Invoke-RestMethod http://localhost:8080/api/tasks/999
+```   
