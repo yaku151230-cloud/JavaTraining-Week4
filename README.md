@@ -1,5 +1,6 @@
 ## プロジェクト概要  
-Spring Bootを用いて、簡単なREST API（/hello, /api/tasks）を提供するサンプルアプリケーションです。
+Spring Boot を使用して、タスクを登録・取得できる簡単な REST API を作成しました。  
+入力値のバリデーションおよび例外ハンドリング（400 / 404）を実装しています。
 
 ## 開発環境  
 ・JDK: Java 17  
@@ -12,10 +13,9 @@ Spring Bootを用いて、簡単なREST API（/hello, /api/tasks）を提供す�
 ・Java 17  
 ・Git  
 
-2.リポジトリのクローン  
-以下のコマンドをコマンドプロンプトかpowershellで入力してください。  
-```git clone https://github.com/yaku151230-cloud/JavaTraining-Week4.git```  
-```cd JavaTraining-Week4```  
+2.リポジトリのクローン   
+1. 本リポジトリをクローンします。   
+2. プロジェクトのルートディレクトリ（build.gradleがあるディレクトリ）で以下を実行します。   
 
 3.アプリケーションの起動  
 gradle  
@@ -25,29 +25,28 @@ gradle
 ・PowerShell  
 ```.\gradle.bat bootRun```  
 
-Maven  
-・コマンドプロンプト  
-```mvnw.cmd spring-boot:run```  
-
-・PowerShell  
-```.\mvnw spring-boot:run```  
-
 4.起動確認  
 以下のようなログが表示されれば起動成功です。  
 ```Started HelloSpringApplication in xxx seconds```  
 
-5.動作確認    
-①```curl http://localhost:8080/hello```  
-②```curl http://localhost:8080/api/tasks```  
-※ curl が使用できない場合は、ブラウザで以下にアクセスしても確認できます。  
-①http://localhost:8080/hello  
-②http://localhost:8080/api/tasks  
+## 実行・確認手順   
+・タスク一覧取得   
+```Invoke-RestMethod http://localhost:8080/api/tasks```   
 
-新しいタスクを登録するには、ターミナル（コマンドプロンプトやPowerShell）で以下のコードを入力してください。```new task```を任意のタスク名に変更可能です。  
-```curl -X POST http://localhost:8080/api/tasks \```  
-  ```-H "Content-Type: application/json" \```  
-  ```-d "{ \"title\": \"new task\" }"```  
+・タスク登録   
+Invoke-RestMethod `   
+  -Uri http://localhost:8080/api/tasks `   
+  -Method POST `   
+  -ContentType "application/json" `   
+  -Body '{"title":"テストタスク"}'   
 
-## エラーが出た場合の対処
-・gradlew 実行時にコマンドが見つからないエラーが出たが、プロジェクト直下に移動して再実行することで解決した。  
-・起動時に Java のバージョンエラーが発生したが、Java25 から Java17 に変更することで解決した。  
+## 例外ハンドリングの動作例   
+・バリデーションエラー   
+Invoke-RestMethod `   
+  -Uri http://localhost:8080/api/tasks `   
+  -Method POST `   
+  -ContentType "application/json" `   
+  -Body '{"title":""}'   
+
+・存在しないリソースへのアクセス   
+```Invoke-RestMethod http://localhost:8080/api/tasks/999```   
