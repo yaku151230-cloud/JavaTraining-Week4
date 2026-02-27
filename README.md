@@ -1,7 +1,11 @@
 ## プロジェクト概要  
-Spring Boot を使用して、タスクを登録・取得できる簡単な REST API を作成しました。  
-入力値のバリデーションおよび例外ハンドリング（400 / 404）を実装しています。
+本課題では、これまでに作成した Task 永続化アプリをベースに、
+Spring Boot + Thymeleaf を用いた Web 画面を実装することを目的としています。
 
+タスクの 一覧表示・新規作成・編集・削除 を Web 画面から行えるようにし、
+バリデーションエラーや不正な URL アクセス時の例外処理も含めて実装しています。
+
+## 起動手順
 ## 開発環境  
 ・JDK: Java 17  
 ・IDE: Visual Studio Code  
@@ -33,32 +37,17 @@ gradlew.bat bootRun
 以下のようなログが表示されれば起動成功です。  
 ```Started HelloSpringApplication in xxx seconds```  
 
-## 実行・確認手順(以下は PowerShell での実行例です。)
-・タスク一覧取得   
-```powershell
-Invoke-RestMethod http://localhost:8080/api/tasks
-```   
+5.実行
+起動後、ブラウザで以下にアクセスしてください。
+http://localhost:8080/tasks
 
-・タスク登録   
-```powershell
-Invoke-RestMethod `
-  -Uri http://localhost:8080/api/tasks `
-  -Method POST `
-  -ContentType "application/json" `
-  -Body '{"title":"テストタスク"}'
-```   
 
-## 例外ハンドリングの動作例   
-・バリデーションエラー   
-```powershell
-Invoke-RestMethod `   
-  -Uri http://localhost:8080/api/tasks `   
-  -Method POST `   
-  -ContentType "application/json" `   
-  -Body '{"title":""}'
-```   
+## 画面遷移
+画面	　　　URL	　　　　　　　　　　　　内容
+一覧画面	　　/tasks	　　　　　　　　　 タスク一覧表示（編集・削除可能）
+新規作成	　　/tasks/new	　　　　　　　タスク新規作成フォーム
+編集	　　　/tasks/{id}/edit	　　　　　タスク編集フォーム
+登録	　　　POST /tasks	　　　　　　　 新規登録処理
+更新	　　　POST /tasks/{id}　　　　	　編集内容の更新
+削除	　　　POST /tasks/{id}/delete	　タスク削除
 
-・存在しないリソースへのアクセス   
-```powershell
-Invoke-RestMethod http://localhost:8080/api/tasks/999
-```   
