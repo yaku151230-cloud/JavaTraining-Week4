@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>タスク作成</title>
+</head>
+<body>
+
+<h1>タスク作成</h1>
+
+<!-- フォーム -->
+<form
+  th:action="${task.id == null}
+      ? @{/tasks}
+      : @{/tasks/{id}(id=${task.id})}"
+  method="post"
+  th:object="${task}"
+>
+    <div>
+    <label>タイトル</label>
+    <input type="text" th:field="*{title}">
+    
+    <!-- エラー表示 -->
+    <div th:if="${#fields.hasErrors('title')}" th:errors="*{title}" style="color:red"></div>
+    </div>
+    <div>
+        <label>完了</label>
+        <input type="checkbox" th:field="*{completed}">
+    </div>
+
+    <button type="submit">登録</button>
+</form>
+
+<!-- 一覧に戻るリンク -->
+<a th:href="@{/tasks}">一覧に戻る</a>
+
+</body>
+</html>
