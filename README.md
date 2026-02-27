@@ -40,8 +40,8 @@ gradlew.bat bootRun
 
 5.実行
 起動後、ブラウザで以下にアクセスしてください。   
-```http://localhost:8080/tasks
-```   
+```http://localhost:8080/tasks```   
+
 
 ## 画面遷移   
 画面	　　　URL	　　　　　　　　　　　　内容    
@@ -53,12 +53,12 @@ gradlew.bat bootRun
 削除	　　　POST /tasks/{id}/delete	　タスク削除   
 
 
-## バリデーションについて
-・タイトルは 必須入力、50文字以内 としています
-・バリデーションには jakarta.validation を使用
+## バリデーションについて   
+・タイトルは 必須入力、50文字以内 としています   
+・バリデーションには jakarta.validation を使用   
 
-## 例外ハンドリングについて
-・存在しないタスクIDにアクセスした場合は TaskNotFoundException を送出
-・@ControllerAdvice により例外をハンドリング
-・画面用アクセス時は 404 エラーページを表示
-・エラー発生時は同一画面に戻り、フィールド下にエラーメッセージを表示します
+## 例外ハンドリングについて   
+・存在しないタスクIDにアクセスした場合は TaskNotFoundException を送出   
+・@ControllerAdvice により例外をハンドリング   
+・画面用アクセス時は 404 エラーページを表示   
+・エラー発生時は同一画面に戻り、フィールド下にエラーメッセージを表示します   
