@@ -6,12 +6,13 @@ Spring Boot + Thymeleaf を用いた Web 画面を実装することを目的と
 バリデーションエラーや不正な URL アクセス時の例外処理も含めて実装しています。   
 
 ## 起動手順
-## 開発環境  
+
+### 開発環境  
 ・JDK: Java 17  
 ・IDE: Visual Studio Code  
 ・ビルドツール: Gradle  
 
-## セットアップ手順  
+### セットアップ手順  
 1.事前準備  
 以下がインストールされているかを確認してください。  
 ・Java 17  
@@ -35,12 +36,12 @@ gradlew.bat bootRun
 
 4.起動確認  
 以下のようなログが表示されれば起動成功です。  
-```Started HelloSpringApplication in xxx seconds```  
+```Started TaskappApplication in xxx seconds```  
 
 5.実行
 起動後、ブラウザで以下にアクセスしてください。   
-http://localhost:8080/tasks   
-
+```http://localhost:8080/tasks
+```   
 
 ## 画面遷移   
 画面	　　　URL	　　　　　　　　　　　　内容    
@@ -51,3 +52,13 @@ http://localhost:8080/tasks
 更新	　　　POST /tasks/{id}　　　　	　編集内容の更新   
 削除	　　　POST /tasks/{id}/delete	　タスク削除   
 
+
+## バリデーションについて
+・タイトルは 必須入力、50文字以内 としています
+・バリデーションには jakarta.validation を使用
+
+## 例外ハンドリングについて
+・存在しないタスクIDにアクセスした場合は TaskNotFoundException を送出
+・@ControllerAdvice により例外をハンドリング
+・画面用アクセス時は 404 エラーページを表示
+・エラー発生時は同一画面に戻り、フィールド下にエラーメッセージを表示します
