@@ -43,7 +43,7 @@ http://localhost:8080/tasks
 
 
 ## 画面遷移   
-画面	　　　URL	　　　　　　　　　　　　内容
+画面	　　　URL	　　　　　　　　　　　　内容    
 一覧画面	　　/tasks	　　　　　　　　　 タスク一覧表示（編集・削除可能）   
 新規作成	　　/tasks/new	　　　　　　　タスク新規作成フォーム   
 編集	　　　/tasks/{id}/edit	　　　　　タスク編集フォーム   
