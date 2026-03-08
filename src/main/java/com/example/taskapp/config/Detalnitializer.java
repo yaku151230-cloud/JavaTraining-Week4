@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+// アプリケーション起動時に初期データを投入するクラスを作成
 @Configuration
 public class DataInitializer {
 
