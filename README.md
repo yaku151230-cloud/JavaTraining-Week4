@@ -1,5 +1,7 @@
 ## プロジェクト概要  
-Spring Bootを用いて、簡単なREST API（/hello, /api/tasks）を提供するサンプルアプリケーションです。
+本課題では、これまでに作成した Task 永続化アプリにSpring Security を導入し、ログイン認証機能を実装することを目的としています。
+未認証ユーザーがタスク一覧ページに直接アクセスできないように制御し、ログイン後にタスク一覧ページへ遷移する仕組みを実装しています。
+また、ログイン失敗時の表示やログアウト処理についても確認できるようになっています。
 
 ## 開発環境  
 ・JDK: Java 17  
@@ -12,42 +14,36 @@ Spring Bootを用いて、簡単なREST API（/hello, /api/tasks）を提供す�
 ・Java 17  
 ・Git  
 
-2.リポジトリのクローン  
-以下のコマンドをコマンドプロンプトかpowershellで入力してください。  
-```git clone https://github.com/yaku151230-cloud/JavaTraining-Week4.git```  
-```cd JavaTraining-Week4```  
+2.リポジトリのクローン    
+本リポジトリをクローンします。   
 
-3.アプリケーションの起動  
+3.アプリケーションの起動   
+build.gradleがあるディレクトリで以下を実行します。   
+
 gradle  
 ・コマンドプロンプト  
 ```gradlew.bat bootRun```  
 
 ・PowerShell  
-```.\gradle.bat bootRun```  
-
-Maven  
-・コマンドプロンプト  
-```mvnw.cmd spring-boot:run```  
-
-・PowerShell  
-```.\mvnw spring-boot:run```  
+```.\gradle.bat bootRun```   
 
 4.起動確認  
 以下のようなログが表示されれば起動成功です。  
-```Started HelloSpringApplication in xxx seconds```  
+```Started TaskappApplication in xxx seconds```  
 
-5.動作確認    
-①```curl http://localhost:8080/hello```  
-②```curl http://localhost:8080/api/tasks```  
-※ curl が使用できない場合は、ブラウザで以下にアクセスしても確認できます。  
-①http://localhost:8080/hello  
-②http://localhost:8080/api/tasks  
+5.ログイン画面へのアクセス     
+```http://localhost:8080/login```   
 
-新しいタスクを登録するには、ターミナル（コマンドプロンプトやPowerShell）で以下のコードを入力してください。```new task```を任意のタスク名に変更可能です。  
-```curl -X POST http://localhost:8080/api/tasks \```  
-  ```-H "Content-Type: application/json" \```  
-  ```-d "{ \"title\": \"new task\" }"```  
+## ログイン情報   
+初期ユーザーとして以下のアカウントを使用できます。   
 
-## エラーが出た場合の対処
-・gradlew 実行時にコマンドが見つからないエラーが出たが、プロジェクト直下に移動して再実行することで解決した。  
-・起動時に Java のバージョンエラーが発生したが、Java25 から Java17 に変更することで解決した。  
+```   
+username: user   
+password: password   
+```
+
+## 再現手順   
+1./loginにアクセスするとログイン画面が表示されます   
+2.上記のアカウントでログインします   
+3.ログイン後/tasksのタスク一覧ページに遷移します   
+4.未ログイン状態で/tasksにアクセスすると/loginにリダイレクトされます   
