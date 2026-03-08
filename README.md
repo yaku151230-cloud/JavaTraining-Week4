@@ -25,7 +25,7 @@ gradle
 ```gradlew.bat bootRun```  
 
 ・PowerShell  
-```.\gradle.bat bootRun```   
+```.\gradlew.bat bootRun```   
 
 4.起動確認  
 以下のようなログが表示されれば起動成功です。  
