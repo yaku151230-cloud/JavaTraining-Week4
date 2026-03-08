@@ -8,6 +8,7 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+// セキュリティ設定を担当するクラスを作成
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
@@ -15,6 +16,7 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
+        // 認証と認可の設定を行う
         http
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/login", "/css/**").permitAll()
@@ -34,6 +36,7 @@ public class SecurityConfig {
         return http.build();
     }
 
+    // パスワードエンコーダーのBeanを定義する
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
