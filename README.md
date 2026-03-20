@@ -1,5 +1,9 @@
-## プロジェクト概要  
-Spring Bootを用いて、簡単なREST API（/hello, /api/tasks）を提供するサンプルアプリケーションです。
+## JavaTraining-Final
+
+## プロダクト概要  
+タスク管理アプリケーションです。  
+ユーザーはログイン後、タスクの一覧確認・作成・編集・削除・完了切替が可能です。  
+画面とREST APIの両方で操作できます。
 
 ## 開発環境  
 ・JDK: Java 17  
@@ -13,7 +17,7 @@ Spring Bootを用いて、簡単なREST API（/hello, /api/tasks）を提供す�
 ・Git  
 
 2.リポジトリのクローン  
-以下のコマンドをコマンドプロンプトかpowershellで入力してください。  
+リポジトリをクローンした後に、クローンしたフォルダに移動します。  
 ```git clone https://github.com/yaku151230-cloud/JavaTraining-Week4.git```  
 ```cd JavaTraining-Week4```  
 
@@ -23,7 +27,7 @@ gradle
 ```gradlew.bat bootRun```  
 
 ・PowerShell  
-```.\gradle.bat bootRun```  
+```.\gradlew.bat bootRun```  
 
 Maven  
 ・コマンドプロンプト  
@@ -32,22 +36,83 @@ Maven
 ・PowerShell  
 ```.\mvnw spring-boot:run```  
 
-4.起動確認  
-以下のようなログが表示されれば起動成功です。  
-```Started HelloSpringApplication in xxx seconds```  
+4.ログイン画面    
+ブラウザから以下にアクセスしてログイン画面に遷移します。  
+```http://localhost:8080/login```  
 
-5.動作確認    
-①```curl http://localhost:8080/hello```  
-②```curl http://localhost:8080/api/tasks```  
-※ curl が使用できない場合は、ブラウザで以下にアクセスしても確認できます。  
-①http://localhost:8080/hello  
-②http://localhost:8080/api/tasks  
+5.初期ユーザーでログイン
+・ユーザー名：```user```   
+・パスワード：```password```   
 
-新しいタスクを登録するには、ターミナル（コマンドプロンプトやPowerShell）で以下のコードを入力してください。```new task```を任意のタスク名に変更可能です。  
-```curl -X POST http://localhost:8080/api/tasks \```  
-  ```-H "Content-Type: application/json" \```  
-  ```-d "{ \"title\": \"new task\" }"```  
+6.ログイン後の操作
+ログイン後はタスク一覧画面```/tasks```にて以下を確認できます。
+・新規作成
+・編集
+・完了切替
+・削除
 
-## エラーが出た場合の対処
-・gradlew 実行時にコマンドが見つからないエラーが出たが、プロジェクト直下に移動して再実行することで解決した。  
-・起動時に Java のバージョンエラーが発生したが、Java25 から Java17 に変更することで解決した。  
+## API確認用
+タスク一覧取得（GET）   
+```curl -u testuser:password http://localhost:8080/api/tasks```   
+
+タスク作成（POST）   
+```   
+curl -u testuser:password -H "Content-Type: application/json"\   
+-d '{"title":"テストタスク"}'\   
+-X POST http://localhost:8080/api/tasks   
+```
+
+## アーキテクチャ   
+```
+ブラウザ / curl
+      ↓
+--------------------------
+| Spring Boot Web Layer  |
+|------------------------|
+| Controller (View/REST) |
+--------------------------
+      ↓
+----------------------
+|   Service Layer    |
+|   (TaskService)    |
+----------------------
+      ↓
+--------------------------
+|   Repository Layer     |
+|  (TaskRepository / JPA)|
+--------------------------
+      ↓
+--------------------------
+| Database (H2/PostgreSQL)|
+--------------------------
+```
+
+## パッケージ構成
+```
+com.example.taskapp   
+ ├─ config
+ │   └─ SecurityConfig.java
+ ├─ controller
+ │   ├─ TaskViewController.java
+ │   └─ TaskRestController.java
+ ├─ entity
+ │   └─ Task.java
+ ├─ exception
+ │   ├─ TaskNotFoundException.java
+ │   └─ GlobalExceptionHandler.java
+ ├─ repository
+ │   └─ TaskRepository.java
+ └─ service
+     └─ TaskService.java
+```
+
+## 既知の制約・今後の改善点
+### 制約（現状の制限）
+・初期ユーザは固定（testuser / password）で、ユーザ管理機能は未実装   
+・Validation はタイトルのみ（@NotBlank, @Size(max=50)）で詳細チェックなし   
+・REST API は最小限のみ（完了切替エンドポイントは任意）   
+
+### 改善点（今後の拡張）
+・ユーザ管理機能やパスワード変更機能の追加   
+・UI デザイン改善（フラッシュメッセージ表示、レスポンシブ対応）   
+・REST API 機能拡張（完了切替、検索・フィルタリングなど）   
