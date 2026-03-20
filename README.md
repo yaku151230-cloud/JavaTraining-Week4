@@ -3,23 +3,25 @@
 ## プロダクト概要  
 タスク管理アプリケーションです。  
 ユーザーはログイン後、タスクの一覧確認・作成・編集・削除・完了切替が可能です。  
-画面とREST APIの両方で操作できます。
+画面とREST APIの両方で操作できます。   
 
 ## 開発環境  
-・JDK: Java 17  
-・IDE: Visual Studio Code  
-・ビルドツール: Gradle  
+・JDK: Java 17   
+・IDE: Visual Studio Code   
+・ビルドツール: Gradle   
 
 ## セットアップ手順  
 1.事前準備  
 以下がインストールされているかを確認してください。  
-・Java 17  
-・Git  
+・Java 17   
+・Git   
 
 2.リポジトリのクローン  
 リポジトリをクローンした後に、クローンしたフォルダに移動します。  
-```git clone https://github.com/yaku151230-cloud/JavaTraining-Week4.git```  
-```cd JavaTraining-Week4```  
+```
+git clone https://github.com/yaku151230-cloud/JavaTraining-Final.git
+cd JavaTraining-Final
+```  
 
 3.アプリケーションの起動  
 gradle  
@@ -40,20 +42,22 @@ Maven
 ブラウザから以下にアクセスしてログイン画面に遷移します。  
 ```http://localhost:8080/login```  
 
-5.初期ユーザーでログイン
+5.初期ユーザーでログイン   
 ・ユーザー名：```user```   
 ・パスワード：```password```   
 
-6.ログイン後の操作
-ログイン後はタスク一覧画面```/tasks```にて以下を確認できます。
-・新規作成
-・編集
-・完了切替
-・削除
+6.ログイン後の操作   
+ログイン後はタスク一覧画面```/tasks```にて以下を確認できます。   
+・新規作成   
+・編集   
+・完了切替   
+・削除   
 
 ## API確認用
 タスク一覧取得（GET）   
-```curl -u testuser:password http://localhost:8080/api/tasks```   
+```
+curl -u testuser:password http://localhost:8080/api/tasks
+```   
 
 タスク作成（POST）   
 ```   
@@ -91,18 +95,24 @@ curl -u testuser:password -H "Content-Type: application/json"\
 ```
 com.example.taskapp   
  ├─ config
+ │   ├─ DataInializer.java
  │   └─ SecurityConfig.java
  ├─ controller
  │   ├─ TaskViewController.java
- │   └─ TaskRestController.java
+ │   ├─ LoginController.java
+ │   ├─ TaskController.java
+ │   └─ ViewExceptionHandler.java
  ├─ entity
+ │   ├─ UserAccount.java
  │   └─ Task.java
  ├─ exception
  │   ├─ TaskNotFoundException.java
  │   └─ GlobalExceptionHandler.java
  ├─ repository
+ │   ├─ UserAccountRepository.java
  │   └─ TaskRepository.java
  └─ service
+     ├─ UserAccountService.java
      └─ TaskService.java
 ```
 
